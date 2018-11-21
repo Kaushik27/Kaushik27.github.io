@@ -496,24 +496,25 @@
             mic = new p5.AudioIn();
             mic.start();
             fft = new p5.FFT();
-            fft.setInput(mic);
-            filter = new p5.LowPass();
+            filter = new p5.HighPass();
+            mic.disconnect();
+			mic.connect(filter);
+			fft.setInput(filter);
+            
         }
         function draw() {
 
-            filter.freq(320);
+            filter.freq(1200);
             var spectrum = fft.analyze();
-            bassEnergy = fft.getEnergy(10, 30);
+            bassEnergy = fft.getEnergy(10, 60);
             subBassEnergy = fft.getEnergy(60, 250)
-            bass = ((bassEnergy / 512) + 1)
-            subBass = ((subBassEnergy / 512) + 1);
-            scaleById(bass, subBass);
+            bass = ((bassEnergy / 10) + 1)
+            subBass = ((subBassEnergy / 10) + 1);
+            scaleById(bass);
             changeColorOnBeat(subBass);
         }
 
-        function scaleById(bass, subBass) {
-            myElementPath.style.transform = 'scale(' + (subBass) + ' )';
-            myElementPath.style.transformOrigin = 'center';
+        function scaleById(bass) {
             myElementSkull.style.transform = 'scale(' + (bass) + ' )';
             myElementSkull.style.transformOrigin = 'center';
         }
