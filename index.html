@@ -287,7 +287,7 @@
             bassEnergy = fft.getEnergy(10, 60);
             subBassEnergy = fft.getEnergy(60, 250)
             bass = ((bassEnergy / 512) + 1)
-            subBass = ((subBassEnergy / 512) + 1);
+            subBass = ((subBassEnergy / 255) + 1);
             scaleById(bass, subBass);
             changeColorOnBeat(subBass);
         }
