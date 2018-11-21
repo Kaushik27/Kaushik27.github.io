@@ -504,7 +504,7 @@
             filter.freq(320);
             var spectrum = fft.analyze();
             bassEnergy = fft.getEnergy(10, 60);
-            subBassEnergy = fft.getEnergy(60, 250)
+            subBassEnergy = fft.getEnergy(500, 20000)
             bass = ((bassEnergy / 1024) + 1)
             subBass = ((subBassEnergy / 512) + 1);
             scaleById(bass, subBass);
