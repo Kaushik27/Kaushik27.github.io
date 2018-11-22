@@ -225,9 +225,8 @@
                     </g>
                 </g>
             </g>
-            
-        </svg>
 
+        </svg>
         <animatetransform xlink:href="#RightEye" attributename="transform" type="rotate" from="0 1102.745 497.535" to="-360 1102.745 497.535" dur="2s" begin="0s" repeatcount="indefinite" />
         <animatetransform xlink:href="#LeftEye" attributename="transform" type="rotate" from="0 818.035 497.595" to="360 818.035 497.595" dur="2s" begin="0s" repeatcount="indefinite" />
         <animate xlink:href="#Path 88" attributename="fill" values="red; white; blue; orange; green; white; red" dur="1s" begin="0s" repeatcount="indefinite" />
@@ -263,7 +262,6 @@
         <animate xlink:href="#Path 85" attributename="fill" values="red; white; blue; orange; green; white; red" dur="1s" begin="0s" repeatcount="indefinite" />
         <animate xlink:href="#Path 86" attributename="fill" values="red; white; blue; orange; green; white; red" dur="1s" begin="0s" repeatcount="indefinite" />
         <animate xlink:href="#Path 59" attributename="fill" values=" white; red; white" dur="1s" begin="0s" repeatcount="indefinite" />
-
         </svg>
     </body>
     <script>
@@ -279,9 +277,9 @@
             fft = new p5.FFT();
             filter = new p5.HighPass();
             mic.disconnect();
-			mic.connect(filter);
-			fft.setInput(filter);
-            
+            mic.connect(filter);
+            fft.setInput(filter);
+            masterVolume(0);
         }
         function draw() {
 
@@ -303,25 +301,25 @@
             if (subBass < 1.05) {
                 myElementPath.style.fill = "white"
             }
-            else if (subBass < 1.1) {
+            else if (subBass < 1.5) {
                 myElementPath.style.fill = "blue"
             }
-            else if (subBass < 1.15) {
+            else if (subBass < 2.5) {
                 myElementPath.style.fill = "cyan"
             }
-            else if (subBass < 1.25) {
+            else if (subBass < 4.5) {
                 myElementPath.style.fill = "#FF00CC"
             }
-            else if (subBass < 1.35) {
+            else if (subBass < 5.5) {
                 myElementPath.style.fill = "#CCFF00"
             }
-            else if (subBass < 1.45) {
+            else if (subBass < 7) {
                 myElementPath.style.fill = "#FFFF66"
             }
-            else if (subBass < 1.55) {
+            else if (subBass < 8.5) {
                 myElementPath.style.fill = "#FF6037"
             }
-            else if (subBass > 1.7) {
+            else if (subBass > 10) {
                 myElementPath.style.fill = "#FF355E"
             }
         }
