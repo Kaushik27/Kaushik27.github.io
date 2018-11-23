@@ -260,7 +260,7 @@
         var x, bass, subBass;
         var fft;
         var filter, bassEnergy, subBassEnergy;
-        var factor = 10;
+        var factor = 10, mul=1;
         high.style.visibility = "visible";
         med.style.visibility = "hidden";
         low.style.visibility = "hidden";
@@ -270,18 +270,21 @@
             med.style.visibility = "hidden";
             low.style.visibility = "visible";
             factor = 40;
+			mul = 4;
         }
         function sensitivityMed() {
             high.style.visibility = "hidden";
             med.style.visibility = "visible";
             low.style.visibility = "hidden";
             factor = 20;
+			mul = 2;
         }
         function sensitivityHigh() {
             high.style.visibility = "visible";
             med.style.visibility = "hidden";
             low.style.visibility = "hidden";
             factor = 10;
+			mul = 1;
         }
         function setup() {
             mic = new p5.AudioIn();
@@ -316,6 +319,7 @@
             }
         }
         function limiter(bass) {
+			bass = bass * mul;
             myElementSkull.style.transform = 'scale(' + (bass) + ' )';
             myElementSkull.style.transformOrigin = 'center';
         }
