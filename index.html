@@ -243,14 +243,15 @@
         }
         function draw() {
 
-            filter.freq(1200);
+            filter.freq(1800);
             var spectrum = fft.analyze();
             bassEnergy = fft.getEnergy(10, 60);
-            subBassEnergy = fft.getEnergy(60, 250)
+            subBassEnergy = fft.getEnergy("lowMid")
             bass = ((bassEnergy / 10) + 1)
-            subBass = ((subBassEnergy / 10) + 1);
+            subBass = ((subBassEnergy / 20) + 1);
             scaleById(bass);
             changeColorOnBeat(subBass);
+            console.log(subBass);
         }
 
         function scaleById(bass) {
@@ -258,25 +259,31 @@
             myElementSkull.style.transformOrigin = 'center';
         }
         function changeColorOnBeat(subBass) {
-            if (subBass < 1.05) {
+            if (subBass < 2) {
                 myElementPath.style.fill = "white"
             }
-            else if (subBass < 1.5) {
+            else if (subBass < 2.5) {
                 myElementPath.style.fill = "blue"
             }
-            else if (subBass < 2.5) {
+            else if (subBass < 3.5) {
                 myElementPath.style.fill = "cyan"
             }
-            else if (subBass < 4.5) {
+            else if (subBass < 4) {
                 myElementPath.style.fill = "#FF00CC"
             }
-            else if (subBass < 5.5) {
+            else if (subBass < 4.5) {
                 myElementPath.style.fill = "#CCFF00"
             }
-            else if (subBass < 7) {
+            else if (subBass < 5) {
+                myElementPath.style.fill = "#FF00CC"
+            }
+            else if (subBass < 6) {
                 myElementPath.style.fill = "#FFFF66"
             }
-            else if (subBass < 8.5) {
+            else if (subBass < 7.5) {
+                myElementPath.style.fill = "#CCFF00"
+            }
+            else if (subBass < 10) {
                 myElementPath.style.fill = "#FF6037"
             }
             else if (subBass > 10) {
